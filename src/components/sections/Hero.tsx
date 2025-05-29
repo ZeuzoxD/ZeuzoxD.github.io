@@ -1,5 +1,5 @@
 "use client";
-import { motion, useScroll, useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -13,15 +13,11 @@ import {
   IconSettings,
 } from "@tabler/icons-react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "../ui/card";
+import { Card } from "../ui/card";
 import { useRef, useState, useEffect } from "react";
 
 export default function Hero() {
-  // const { scrollYProgress } = useScroll();
-  // const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-  const ref = useRef(null);
   const bentoRef = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
   const isBentoInView = useInView(bentoRef, { once: true, margin: "-50px" });
 
   const letterVariants = {
