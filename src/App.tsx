@@ -2,7 +2,6 @@
 
 import GeometricBackground from "./components/GeometricBackground";
 import Nav from "./components/Nav";
-import FWork from "./components/sections/FWork";
 import Hero from "./components/sections/Hero";
 
 export default function Portfolio() {
