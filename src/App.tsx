@@ -14,7 +14,6 @@ export default function Portfolio() {
       <main className="space-y-5">
         <Nav />
         <Hero />
-        <FWork />
       </main>
     </div>
   );

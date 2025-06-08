@@ -168,7 +168,7 @@ export default function FWork() {
           </CarouselContent>
         </Carousel>
 
-        {/* Active pagination dots - thinner design */}
+        {/* Active pagination dots*/}
         <motion.div
           className="flex justify-center mt-2 gap-2"
           initial={{ opacity: 0, y: 20 }}
