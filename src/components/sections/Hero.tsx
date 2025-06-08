@@ -37,11 +37,11 @@ export default function Hero() {
   const slides = [
     {
       title: "RTL Design & Verification",
-      text: "Designing, verifying and synthesizing digital systems using Verilog, SystemVerilog, and HLSs like Bluespec.",
+      text: "Designing, verifying and synthesizing digital systems using Verilog, SystemVerilog, and Bluespec.",
     },
     {
       title: "LLM-Centric Machine Learning",
-      text: "Exploring the intersection of transformers and hardware-profiling, optimizing, and building LLMs for efficient deployment.",
+      text: "Exploring the intersection of transformers and hardware-optimizstions, for efficient deployment.",
     },
     {
       title: "Hardware-Accelerated System Design",
@@ -49,26 +49,28 @@ export default function Hero() {
     },
     {
       title: "Professional UI/UX & Web Development",
-      text: "Crafting full-stack or web apps wih refined UI/UX with 7 years of design experience.",
+      text: "Crafting full-stack or web apps with refined UI/UX with 7 years of design experience.",
     },
     {
       title: "Game Development",
-      text: "Developing a stylized 2.5D game in Unreal Engine that blends cinematic visuals with interactive storytelling.",
+      text: "Developing a stylized 2.5D role playing game in Unreal Engine that blends cinematic visuals with interactive storytelling.",
     },
   ];
 
   const toolDescriptions: Record<string, string> = {
     "Xilinx Vivado":
       "Used extensively for synthesis and implementation of digital systems.",
-    Cadence: "Experience with schematic design and simulation workflows.",
-    "Tanner EDA": "Used for analog/mixed-signal IC design and layout.",
-    CST: "Exposure to EM simulation for signal integrity analysis.",
+    Cadence:
+      "Experience with simulating digital circuits with NC-Verilog and Synthesizing them with Genus.",
+    "Tanner EDA":
+      "Experice through University coursework for analog circuits design.",
+    CST: "Exposure to modeling and simulating different types of antenna with detailed analysis report.",
     QUCS: "Open-source analog circuit simulation experience.",
-    MATLAB: "Utilized for DSP prototyping and algorithm modeling.",
+    MATLAB: "Utilized for prototyping and algorithm modeling and simulations.",
     "Unreal Engine":
-      "Used in cinematic environments and visualization projects.",
+      "Used in cinematic environments and vfx projects and now building a 2.5D game.",
     Blender: "3D asset creation, VFX integration and animation work.",
-    Photoshop: "Poster, asset editing, and VFX pipeline prep.",
+    Photoshop: "7 years of design experience with creating UIs, Posters, etc.",
   };
 
   const [hoveredTool, setHoveredTool] = useState<string | null>(null);
@@ -95,7 +97,7 @@ export default function Hero() {
       className="relative flex flex-col
       items-center justify-center p-4
       bg-gradient-to-t from-white/5 to-[#2E1115]/60
-      backdrop-blur-lg mix-blend-overlay rounded-xl 
+      backdrop-blur-lg rounded-xl 
       hover:border-pink-400/40
       transition duration-300 cursor-pointer group"
     >
@@ -120,10 +122,9 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 10, scale: 0.9 }}
           transition={{ duration: 0.2 }}
-          className="absolute font-sf bg-black
-          backdrop-blur-xl 
+          className="absolute font-sf bg-black/80
           bottom-full mb-3 w-56 text-xs text-left
-          text-white rounded-lg p-3"
+          text-white rounded-lg p-3 border-violet-300/50 border-2"
         >
           <div className="font-semibold text-pink-300 mb-1">{name}</div>
           <p>{toolDescriptions[name]}</p>
@@ -136,7 +137,7 @@ export default function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveSlide((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, 12000);
     return () => clearInterval(interval);
   }, []);
 
@@ -248,7 +249,7 @@ export default function Hero() {
               {[
                 {
                   icon: <IconBrandGithub size={30} stroke={1.5} />,
-                  href: "#",
+                  href: "https://github.com/ZeuzoxD",
                   label: "GitHub",
                 },
                 {

@@ -2,6 +2,7 @@
 
 import GeometricBackground from "./components/GeometricBackground";
 import Nav from "./components/Nav";
+import FWork from "./components/sections/FWork";
 import Hero from "./components/sections/Hero";
 
 export default function Portfolio() {
@@ -13,6 +14,7 @@ export default function Portfolio() {
       <main className="space-y-5">
         <Nav />
         <Hero />
+        <FWork />
       </main>
     </div>
   );
