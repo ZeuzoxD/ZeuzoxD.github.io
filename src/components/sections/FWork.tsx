@@ -3,7 +3,6 @@ import ProjectCard from "../ProjectCard";
 import { Carousel, CarouselContent, CarouselItem } from "../ui/carousel";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect, useCallback } from "react";
-import { IconArrowUpRight } from "@tabler/icons-react";
 
 export default function FWork() {
   const featuredProjects = projects.filter((p) => p.featured);
@@ -69,62 +68,20 @@ export default function FWork() {
   return (
     <motion.section
       ref={sectionRef}
-      className="py-20 relative z-10"
+      className="py-2 relative z-10"
       initial={{ opacity: 0 }}
       animate={isInView ? { opacity: 1 } : { opacity: 0 }}
       transition={{ duration: 0.8 }}
     >
-      {/* Animated line above title */}
       <motion.div
-        className="flex items-center justify-center mb-6"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        <motion.div
-          className="h-[1px] bg-gradient-to-r from-purple-400 to-pink-400"
-          initial={{ width: 0 }}
-          animate={isInView ? { width: "200px" } : { width: 0 }}
-          transition={{ duration: 1, delay: 0.4 }}
-        />
-      </motion.div>
-
-      {/* Title with stagger animation */}
-      <motion.div
-        className="text-center mb-8 relative z-30"
-        initial={{ opacity: 0, y: 20 }}
-        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-      >
-        <h2 className="text-white text-5xl capitalize">
-          {"Featured Works".split("").map((char, index) => (
-            <motion.span
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{
-                duration: 0.3,
-                delay: 0.5 + index * 0.03,
-                ease: "easeOut",
-              }}
-              className="inline-block"
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          ))}
-        </h2>
-      </motion.div>
-
-      {/* Carousel Container */}
-      <motion.div
-        className="relative max-w-7xl mx-auto h-full px-4"
+        className="relative max-w-7xl mx-auto px-4"
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
         {/* Improved gradient fade edges */}
-        <div className="pointer-events-none absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-black via-black/60 to-transparent z-20" />
-        <div className="pointer-events-none absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-black via-black/60 to-transparent z-20" />
+        {/* <div className="pointer-events-none absolute top-0 left-0 h-full w-24 bg-gradient-to-r from-black via-black/60 to-transparent z-20" /> */}
+        {/* <div className="pointer-events-none absolute top-0 right-0 h-full w-24 bg-gradient-to-l from-black via-black/60 to-transparent z-20" /> */}
 
         <Carousel
           setApi={setApi}
@@ -138,12 +95,9 @@ export default function FWork() {
         >
           <CarouselContent className="ml-0 py-4">
             {featuredProjects.map((project, index) => (
-              <CarouselItem
-                key={project.id}
-                className="pl-4 basis-full sm:basis-1/2"
-              >
+              <CarouselItem key={project.id} className="basis-1/2">
                 <motion.div
-                  className="h-[380px] w-full max-w-[400px] md:max-w-[550px] mx-auto p-2"
+                  className="h-[380px] w-full max-w-[380px] md:max-w-[550px] mx-auto p-2"
                   initial={{ opacity: 0, scale: 0.9, rotateY: -10 }}
                   animate={{ opacity: 1, scale: 1, rotateY: 0 }}
                   transition={{
@@ -181,8 +135,8 @@ export default function FWork() {
               onClick={() => goToSlide(index)}
               className={`relative transition-all duration-300 group ${
                 index === currentSlide
-                  ? "w-8 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-lg shadow-purple-500/50"
-                  : "w-2 h-2 bg-white/20  hover:bg-white/40 backdrop-blur-sm rounded-full"
+                  ? "w-8 h-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full hover:shadow-lg hover:shadow-purple-500/50"
+                  : "w-2 h-2 bg-white/20  hover:bg-white/40 backdrop-blur-sm hover:shadow-lg hover:shadow-purple-300/25 rounded-full"
               }`}
               whileHover={{
                 scale: index === currentSlide ? 1.1 : 1.2,
@@ -207,31 +161,6 @@ export default function FWork() {
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 mix-blend-overlay" />
             </motion.button>
           ))}
-        </motion.div>
-
-        {/* View All Works Button */}
-        <motion.div
-          className="flex justify-center mt-10"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <button
-            className="flex items-center justify-center gap-2 
-                  text-lg font-semibold text-white shadow-none
-                  bg-gradient-to-r from-violet-500 to-pink-500
-                  transition-all duration-300 min-w-[150px]
-                  hover:shadow-lg rounded-xl px-6 py-2 
-                  hover:from-violet-500 hover:to-pink-500 hover:border-0 
-                  hover:shadow-violet-300/25 font-sf"
-          >
-            View All Works
-            <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.5 }}
-            >
-              <IconArrowUpRight size={20} stroke={1.5} className="" />
-            </motion.div>
-          </button>
         </motion.div>
       </motion.div>
 

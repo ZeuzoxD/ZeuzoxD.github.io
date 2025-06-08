@@ -112,13 +112,13 @@ export default function ProjectCard({ project, index = 0 }: Props) {
         </div>
 
         {/* Description */}
-        <p className="text-base text-gray-300 font-medium leading-relaxed line-clamp-3">
+        <p className="text-base text-gray-300 font-medium leading-relaxed mb-2 line-clamp-3">
           {project.shortdescription}
         </p>
       </div>
 
       {/* Tags */}
-      <div className="flex flex-wrap gap-2">
+      <div className="flex mt-1 flex-wrap gap-2">
         {project.tech.map((tech, techIndex) => (
           <span
             key={techIndex}

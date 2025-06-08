@@ -15,7 +15,7 @@ export default function GeometricBackground() {
   }, []);
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none">
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-0">
       {/* Base black background */}
       <div className="absolute inset-0 bg-black" />
 

@@ -1,13 +1,15 @@
 "use client";
-import { useState } from "react";
 import { motion } from "framer-motion";
+import Work from "./sections/Work";
 
-export default function Nav() {
-  const [activeSection, setActiveSection] = useState("about");
+interface NavProps {
+  activeSection: string;
+  setActiveSection: (section: string) => void;
+}
 
+export default function Nav({ activeSection, setActiveSection }: NavProps) {
   if (activeSection === "works") {
-    // return <WorksPage onBack={() => setActiveSection("about")} />;
-    return;
+    return <Work onBack={() => setActiveSection("about")} />;
   }
 
   return (
@@ -30,6 +32,7 @@ export default function Nav() {
             {["ABOUT", "WORKS", "CONTACT"].map((item) => (
               <motion.button
                 key={item}
+                style={{ border: "none" }}
                 className={`relative px-4 py-2 text-sm font-medium bg-clip-text transition-colors font-sf ${
                   activeSection === item.toLowerCase()
                     ? "text-purple-400"
