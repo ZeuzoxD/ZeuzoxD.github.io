@@ -96,7 +96,7 @@ export default function Hero() {
       whileTap={{ scale: 0.95 }}
       className="relative flex flex-col
       items-center justify-center p-4
-      bg-gradient-to-t from-white/5 to-[#2E1115]/60
+      bg-gradient-to-t from-[#eb8f34]/5 to-[#2E1115]/60
       backdrop-blur-lg rounded-xl 
       hover:border-pink-400/40
       transition duration-300 cursor-pointer group"
@@ -205,14 +205,39 @@ export default function Hero() {
                   transition={{ duration: 0.8, delay: 0.5 }}
                   className="space-y-2"
                 >
-                  <div className="flex space-x-1 tracking-wider">
-                    <div className="text-base md:text-lg font-semibold font-sf">
-                      Electronics and Communication UG
+                  <div className="flex-col md:hidden tracking-wide">
+                    <div
+                      className="text-md 
+                       font-semibold"
+                    >
+                      Electronics & Communication UG
                     </div>
-                    <div className="text-lg md:text-xl font-semibold bg-gradient-to-b from-purple-500 to-pink-500 bg-clip-text text-transparent font-sf">
+                    <div
+                      className="text-md
+                      font-semibold"
+                    >
+                      PES University, Bengaluru
+                    </div>
+                  </div>
+
+                  <div className="hidden md:flex space-x-1 tracking-wider">
+                    <div
+                      className="text-md lg:text-lg 
+                       font-semibold"
+                    >
+                      Electronics & Communication UG
+                    </div>
+                    <div
+                      className="text-md lg:text-lg 
+                      font-semibold bg-gradient-to-b from-purple-500 
+                      to-pink-500 bg-clip-text text-transparent"
+                    >
                       |
                     </div>
-                    <div className="text-base md:text-lg font-semibold font-sf">
+                    <div
+                      className="text-md lg:text-lg
+                      font-semibold font-sf"
+                    >
                       PES University, Bengaluru
                     </div>
                   </div>

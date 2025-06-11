@@ -36,7 +36,7 @@ export default function WorksPage({ onBack }: WorksPageProps) {
 
       {/* Header */}
       <motion.header
-        className="relative z-40 p-6"
+        className="relative p-6"
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
@@ -67,7 +67,7 @@ export default function WorksPage({ onBack }: WorksPageProps) {
         </div>
       </motion.header>
 
-      <div ref={heroRef}>
+      <div ref={heroRef} className="z-10">
         {/* Animated line above title */}
         <motion.div
           className="flex items-center justify-center pt-12"
@@ -86,7 +86,7 @@ export default function WorksPage({ onBack }: WorksPageProps) {
         </motion.div>
 
         {/* Hero Section */}
-        <section className="relative z-10 py-8 px-6">
+        <section className="relative py-8 px-6">
           <div className="max-w-7xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -99,7 +99,7 @@ export default function WorksPage({ onBack }: WorksPageProps) {
               <h1
                 className="text-5xl md:text-6xl lg:text-7xl font-medium 
                 bg-gradient-to-r from-[#bfd7fd] to-[#d4acc2] bg-clip-text text-transparent 
-                tracking-wide font-sf"
+                tracking-wide "
               >
                 ALL WORKS
               </h1>
@@ -131,7 +131,7 @@ export default function WorksPage({ onBack }: WorksPageProps) {
         </motion.div>
 
         <motion.div
-          className="relative z-30"
+          className="relative "
           initial={{ opacity: 0, y: 20 }}
           animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.3 }}
@@ -168,7 +168,7 @@ export default function WorksPage({ onBack }: WorksPageProps) {
         </motion.div>
 
         <motion.div
-          className="relative z-30"
+          className="relative "
           initial={{ opacity: 0, y: 20 }}
           animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.6, delay: 0.3 }}
