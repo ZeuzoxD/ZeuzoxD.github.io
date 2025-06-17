@@ -168,7 +168,7 @@ export default function Hero() {
   return (
     <motion.section className="relative min-h-screen min-w-screen flex justify-center overflow-hidden pt-20">
       <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid xl:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
           <div className="space-y-5">
             {/* Animated Name */}
@@ -205,7 +205,7 @@ export default function Hero() {
                   transition={{ duration: 0.8, delay: 0.5 }}
                   className="space-y-2"
                 >
-                  <div className="flex-col md:hidden tracking-wide">
+                  <div className="flex-col xl:hidden tracking-wide">
                     <div
                       className="text-md 
                        font-semibold"
@@ -220,7 +220,7 @@ export default function Hero() {
                     </div>
                   </div>
 
-                  <div className="hidden md:flex space-x-1 tracking-wider">
+                  <div className="hidden xl:flex space-x-1 tracking-wider">
                     <div
                       className="text-md lg:text-lg 
                        font-semibold"
@@ -392,8 +392,11 @@ export default function Hero() {
           animate={isBentoInView ? "visible" : "hidden"}
           className="text-center mb-14"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 mb-6">
-            <motion.div className="lg:col-span-8" variants={cardVarients}>
+          <div className="grid grid-cols-1 lg:grid-cols-8  xl:grid-cols-12 gap-4 mb-6">
+            <motion.div
+              className="lg:col-span-5 xl:col-span-8"
+              variants={cardVarients}
+            >
               <Card
                 className=" 
               bg-gradient-to-br from-[#87439a]/15 to-[#3c1e27]/20 
@@ -440,7 +443,7 @@ export default function Hero() {
                           x: 5,
                           transition: { duration: 0.2 },
                         }}
-                        className="bg-white/3 mix-blend-screen px-5 py-5 rounded-xl 
+                        className="bg-white/3 mix-blend-screen p-4 xl:p-5  rounded-xl 
                       text-white text-md text-left font-medium font-sf flex items-center gap-2"
                       >
                         <motion.div
@@ -465,7 +468,10 @@ export default function Hero() {
             </motion.div>
 
             {/* What i do best */}
-            <motion.div className="lg:col-span-4" variants={cardVarients}>
+            <motion.div
+              className="lg:col-span-3 xl:col-span-4"
+              variants={cardVarients}
+            >
               <Card
                 className="
               bg-gradient-to-tr from-[#3c1r27]/50 to-[#65117c]/20 
@@ -600,7 +606,10 @@ export default function Hero() {
             </motion.div>
 
             {/* Tools */}
-            <motion.div className="lg:col-span-12" variants={cardVarients}>
+            <motion.div
+              className="lg:col-span-8 xl:col-span-12"
+              variants={cardVarients}
+            >
               <Card
                 className="
               bg-gradient-to-tr from-[#794436]/15 to-[#654224]/20 

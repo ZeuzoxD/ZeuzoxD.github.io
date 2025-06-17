@@ -2,24 +2,29 @@
 
 import { useState } from "react";
 import GeometricBackground from "./components/GeometricBackground";
-import Nav from "./components/Nav";
 import Hero from "./components/sections/Hero";
+import WorksPage from "./components/sections/Work";
+import ContactPage from "./components/sections/ContactPage";
+import Navigation from "./components/Navigation";
 
 export default function Portfolio() {
-  const [activeSection, setActiveSection] = useState("about");
+  const [currentPage, setCurrentPage] = useState("home");
 
+  if (currentPage === "contact") {
+    return <ContactPage onBack={() => setCurrentPage("home")} />;
+  }
+
+  if (currentPage === "works") {
+    return <WorksPage onBack={() => setCurrentPage("home")} />;
+  }
   return (
     <div className="min-h-screen bg-black text-white relative overflow-x-hidden font-sf">
-      {/* Background Elements */}
       <GeometricBackground />
-      {/* Main Content */}
+
+      <Navigation currentPage={currentPage} setCurrentPage={setCurrentPage} />
       <main className="space-y-5">
-        <Nav
-          activeSection={activeSection}
-          setActiveSection={setActiveSection}
-        />
-        {/* Only render Hero when not on works page */}
-        {activeSection !== "works" && <Hero />}
+        {" "}
+        <Hero />
       </main>
     </div>
   );

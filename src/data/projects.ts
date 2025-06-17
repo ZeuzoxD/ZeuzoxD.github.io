@@ -167,3 +167,5 @@ export const projects: Project[] = [
     featured: false,
   },
 ];
+
+export const categories = ["All", "RTL Design", "ML", "LLM"];

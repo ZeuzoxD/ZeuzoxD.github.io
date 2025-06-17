@@ -1,12 +1,9 @@
 "use client";
 
-import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { IconArrowLeft } from "@tabler/icons-react";
-import { useRef } from "react";
-import { projects } from "@/data/projects";
-import ProjectCard from "@/components/ProjectCard";
-import FWork from "./FWork";
 import GeometricBackground from "../GeometricBackground";
+import { WorkSection } from "./Project";
 
 interface WorksPageProps {
   onBack: () => void;
@@ -15,12 +12,6 @@ interface WorksPageProps {
 export default function WorksPage({ onBack }: WorksPageProps) {
   const { scrollYProgress } = useScroll();
   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-
-  const heroRef = useRef(null);
-  const isHeroInView = useInView(heroRef, { once: true, amount: 0.2 });
-
-  // Get all non-featured projects
-  const otherProjects = projects.filter((p) => !p.featured);
 
   return (
     <div className="min-h-screen min-w-screen bg-black text-white relative overflow-x-hidden font-sf">
@@ -67,144 +58,38 @@ export default function WorksPage({ onBack }: WorksPageProps) {
         </div>
       </motion.header>
 
-      <div ref={heroRef} className="z-10">
-        {/* Animated line above title */}
-        <motion.div
-          className="flex items-center justify-center pt-12"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={
-            isHeroInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }
-          }
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
+      {/* Hero Section */}
+      <section className="relative py-8 px-6">
+        <div className="mx-auto text-center">
           <motion.div
-            className="h-[1px] bg-gradient-to-r from-purple-400 to-pink-400"
-            initial={{ width: 0 }}
-            animate={isHeroInView ? { width: "200px" } : { width: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          />
-        </motion.div>
-
-        {/* Hero Section */}
-        <section className="relative py-8 px-6">
-          <div className="max-w-7xl mx-auto text-center">
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="space-y-4"
+          >
             <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={
-                isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }
-              }
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="space-y-4"
-            >
-              <h1
-                className="text-5xl md:text-6xl lg:text-7xl font-medium 
+              initial={{ width: 0 }}
+              whileInView={{ width: "250px" }}
+              transition={{ duration: 1, delay: 0.3 }}
+              className="h-[2px] bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"
+            />
+            <h1
+              className="text-5xl md:text-6xl lg:text-7xl font-medium 
                 bg-gradient-to-r from-[#bfd7fd] to-[#d4acc2] bg-clip-text text-transparent 
                 tracking-wide "
-              >
-                ALL WORKS
-              </h1>
+            >
+              ALL WORKS
+            </h1>
 
-              <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed tracking-wide ">
-                A comprehensive showcase of projects that reflect my interests
-                across hardware, software and design.
-              </p>
-            </motion.div>
-          </div>
-        </section>
-      </div>
-
-      <div className="flex-col max-w-7xl mx-auto mt-10">
-        <motion.div
-          className="flex mb-6"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={
-            isHeroInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }
-          }
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <motion.div
-            className="h-[1px] bg-gradient-to-r from-purple-400 to-pink-400"
-            initial={{ width: 0 }}
-            animate={isHeroInView ? { width: "150px" } : { width: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          />
-        </motion.div>
-
-        <motion.div
-          className="relative "
-          initial={{ opacity: 0, y: 20 }}
-          animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <motion.h2
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-white text-3xl tracking-wide capitalize"
-          >
-            FEATURED PROJECTS
-          </motion.h2>
-        </motion.div>
-      </div>
-
-      {/* Featured Works */}
-      <FWork />
-      <div className="flex-col max-w-7xl mx-auto mt-10">
-        <motion.div
-          className="flex mb-6"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={
-            isHeroInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0 }
-          }
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <motion.div
-            className="h-[1px] bg-gradient-to-r from-purple-400 to-pink-400"
-            initial={{ width: 0 }}
-            animate={isHeroInView ? { width: "150px" } : { width: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
-          />
-        </motion.div>
-
-        <motion.div
-          className="relative "
-          initial={{ opacity: 0, y: 20 }}
-          animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          <motion.h2
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-white text-3xl tracking-wide capitalize"
-          >
-            OTHER PROJECTS
-          </motion.h2>
-        </motion.div>
-      </div>
-
-      {/* All Other Projects Grid */}
-      <section className="relative z-10 py-5">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-6">
-            {otherProjects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -5 }}
-                className="group"
-              >
-                <ProjectCard project={project} index={index} />
-              </motion.div>
-            ))}
-          </div>
+            <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed tracking-wide ">
+              A comprehensive showcase of projects that reflect my interests
+              across hardware, software and design.
+            </p>
+          </motion.div>
         </div>
       </section>
+
+      {/* Featured Works */}
 
       {/* Stats Section */}
       {/* <section className="relative z-10 py-20 px-6"> */}
@@ -243,6 +128,7 @@ export default function WorksPage({ onBack }: WorksPageProps) {
       {/*   </div> */}
       {/* </section> */}
 
+      <WorkSection />
       {/* CTA Section */}
       <section className="relative z-10 py-20 px-6">
         <div className="max-w-4xl mx-auto text-center">
@@ -260,13 +146,15 @@ export default function WorksPage({ onBack }: WorksPageProps) {
               className="h-px bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"
             />
 
-            <h2
+            <motion.h2
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
               className="text-4xl lg:text-5xl font-medium tracking-wide 
               bg-gradient-to-l from-purple-400 via-pink-400 to-purple-600 
               bg-clip-text text-transparent "
             >
               INTERESTED IN COLLABORATION?
-            </h2>
+            </motion.h2>
             <p className="text-lg max-w-2xl mx-auto tracking-wide">
               I'm always open to meaningful collaborations-whether it's
               building, designing, optimizing systems or exploring research

@@ -1,16 +1,11 @@
 import { Project } from "@/data/type";
-import {
-  IconArrowUpRight,
-  IconCalendar,
-  IconCode,
-  IconExternalLink,
-  IconUser,
-} from "@tabler/icons-react";
+import { IconArrowUpRight, IconCalendar, IconUser } from "@tabler/icons-react";
 import { motion } from "framer-motion";
 
 type Props = {
   project: Project;
   index?: number;
+  onClick?: (project: Project) => void;
 };
 
 const colorVarients = [
@@ -50,7 +45,7 @@ const getStatusColor = (status: string) => {
   }
 };
 
-export default function ProjectCard({ project, index = 0 }: Props) {
+export default function ProjectCard({ project, index = 0, onClick }: Props) {
   const colors = colorVarients[index % colorVarients.length];
 
   return (
@@ -58,118 +53,62 @@ export default function ProjectCard({ project, index = 0 }: Props) {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`mix-blend-screen backdrop-blur-xl border-[2px] h-full
+      whileHover={{ y: -5, scale: 1.02 }}
+      onClick={() => onClick?.(project)}
+      className={`mix-blend-screen z-10 backdrop-blur-xl border-[2px] h-full
                 rounded-2xl p-6 transition duration-500 group cursor-pointer
-                flex flex-col justify-between ${colors.bg} ${colors.border} ${colors.hover}`}
+                flex flex-col justify-evenly ${colors.bg} ${colors.border} ${colors.hover}`}
     >
-      {/* Title */}
-      <div className="space-y-3">
-        <div className="flex items-start justify-between">
-          <div className="flex-1">
-            <div className="flex items-center gap-2 mb-2">
-              <div className="flex-col space-y-2">
-                <h3 className="text-xl md:text-2xl text-white font-medium mb-3">
-                  {project.title}
-                </h3>
-                <p
-                  className={`text-base font-semibold`}
-                  style={{ color: colors.accent }}
-                >
-                  {project.subtitle}
-                </p>
-
-                <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
-                  <div className="flex items-center font-medium text-sm gap-2">
-                    <IconCalendar size={18} />
-                    <span>{project.year}</span>
-                  </div>
-                  <div className="flex items-center font-medium text-sm gap-2">
-                    {project.team == "Solo Project" ? (
-                      <IconUser size={18} />
-                    ) : (
-                      <IconUser size={18} />
-                    )}
-                    <span>{project.team}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Link icon */}
-              <div className="ml-auto">
-                <div
-                  className="w-20 h-20 rounded-full border flex items-center justify-center
-          group-hover:scale-110 transition-transform duration-300"
-                  style={{ borderColor: colors.accent }}
-                >
-                  <IconArrowUpRight
-                    size={30}
-                    style={{ color: colors.accent }}
-                  />
-                </div>
-              </div>
+      <div className="flex items-start justify-between mb-2 pb-4 border-b border-white/10">
+        <div className="flex items-start flex-col gap-4">
+          <div
+            className={`px-3 py-1 rounded-full text-xs font-medium capitalize ${getStatusColor(project.status)}`}
+          >
+            {project.status}
+          </div>
+          <div className="flex items-center gap-4 text-xs text-gray-400 mb-3">
+            <div className="flex items-center font-medium text-sm gap-2">
+              <IconCalendar size={18} />
+              <span>{project.year}</span>
+            </div>
+            <div className="flex items-center font-medium text-sm gap-2">
+              {project.team == "Solo Project" ? (
+                <IconUser size={18} />
+              ) : (
+                <IconUser size={18} />
+              )}
+              <span>{project.team}</span>
             </div>
           </div>
         </div>
 
+        {/* Link icon */}
+        <div className="ml-auto">
+          <div
+            className="w-16 h-16 rounded-full border flex items-center justify-center
+          group-hover:scale-110 transition-transform duration-300"
+            style={{ borderColor: colors.accent }}
+          >
+            <IconArrowUpRight size={30} style={{ color: colors.accent }} />
+          </div>
+        </div>
+      </div>
+
+      {/* Title */}
+      <div className="flex-col items-start justify-between">
+        <h3 className="text-xl md:text-2xl text-white font-medium mb-3">
+          {project.title}
+        </h3>
+        <p
+          className={`text-base font-semibold`}
+          style={{ color: colors.accent }}
+        >
+          {project.subtitle}
+        </p>
         {/* Description */}
         <p className="text-base text-gray-300 font-medium leading-relaxed mb-2 line-clamp-3">
           {project.shortdescription}
         </p>
-      </div>
-
-      {/* Tags */}
-      <div className="flex mt-1 flex-wrap gap-2">
-        {project.tech.map((tech, techIndex) => (
-          <span
-            key={techIndex}
-            className="text-xs px-3 py-2  font-semibold 
-            rounded-full text-white border-2"
-            style={{ borderColor: colors.accent }}
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-
-      <div className="flex items-center justify-between mt-6 pt-4 border-t border-white/10">
-        <div
-          className={`px-3 py-1 rounded-full text-xs font-medium capitalize ${getStatusColor(project.status)}`}
-        >
-          {project.status}
-        </div>
-
-        <div className="flex items-center gap-2">
-          {project.codeLink && (
-            <a
-              href={project.codeLink}
-              target="_blank"
-              rel="noreferrer"
-              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
-            >
-              <IconCode
-                size={20}
-                style={{
-                  color: colors.accent,
-                }}
-              />
-            </a>
-          )}
-          {project.demoLink && (
-            <a
-              href={project.demoLink}
-              target="_blank"
-              rel="noreferrer"
-              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
-            >
-              <IconExternalLink
-                size={20}
-                style={{
-                  color: colors.accent,
-                }}
-              />
-            </a>
-          )}
-        </div>
       </div>
     </motion.div>
   );
