@@ -166,7 +166,7 @@ export default function Hero() {
   };
 
   return (
-    <motion.section className="relative min-h-screen min-w-screen flex justify-center overflow-hidden pt-20">
+    <motion.section className="relative min-h-screen min-w-screen flex justify-center overflow-hidden pt-25">
       <div className="max-w-7xl mx-auto px-6 relative z-10 space-y-8">
         <div className="grid xl:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
