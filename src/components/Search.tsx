@@ -88,12 +88,13 @@ export default function Search({
               <motion.button
                 key={category}
                 onClick={() => setActiveFilter(category)}
-                className={`px-6 py-3 rounded-lg font-medium
+                style={{ border: "none" }}
+                className={`px-6 py-3 rounded-lg  backdrop-blur-md
               transition-all relative overflow-hidden border-none outline-none 
               ${
                 activeFilter === category
-                  ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg"
-                  : "bg-white/5 backdrop-blur-md "
+                  ? "bg-gradient-to-b from-purple-200 to-purple-200 text-violet-900"
+                  : "bg-gradient-to-b from-violet-950/20 to-violet-950/20 text-violet-200"
               }`}
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
@@ -102,11 +103,13 @@ export default function Search({
                 transition={{ delay: 0.6 + index * 0.05 }}
               >
                 {/* Active Indicator */}
-                <span className="relative z-10">{category}</span>
+                <span className="relative font-semibold tracking-wide z-10">
+                  {category}
+                </span>
 
                 {/* Hover effect */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 opacity-0"
+                  className="absolute inset-0 bg-gradient-to-r from-purple-200/20 to-purple-200/20 opacity-0"
                   whileHover={{ opacity: 1 }}
                   transition={{ duration: 0.2 }}
                 />

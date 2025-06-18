@@ -13,15 +13,43 @@ import { Project } from "@/data/type";
 interface ProjectDrawerProps {
   project: Project | null;
   isOpen: boolean;
+  index?: number;
   onClose: () => void;
 }
+
+const colorVarients = [
+  //Purple varient
+  {
+    bg: "bg-gradient-to-br from-[#87439a]/15 to-[#3c1e27]/20",
+    border: "border-[#a186be]/35",
+    hover: "hover:bg-[#cfadee]/5",
+    accent: "#a186be",
+  },
+  //Red
+  {
+    bg: "bg-gradient-to-br from-[#8f2323]/15 to-[#ee5684]/20",
+    border: "border-[#ee5684]/35",
+    hover: "hover:bg-[#ee5684]/5",
+    accent: "#ee5684",
+  },
+  //Yellow
+  {
+    bg: "bg-gradient-to-br from-[#8f4c23]/15 to-[#ee9356]/20",
+    border: "border-[#ee9356]/35",
+    hover: "hover:bg-[#ee9356]/5",
+    accent: "#ee9356",
+  },
+];
 
 export default function ProjectDrawer({
   project,
   isOpen,
+  index = 0,
   onClose,
 }: ProjectDrawerProps) {
   if (!project) return null;
+
+  const colors = colorVarients[index % colorVarients.length];
 
   return (
     <AnimatePresence>
@@ -43,18 +71,20 @@ export default function ProjectDrawer({
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed top-0 right-0 h-full w-full max-w-2xl bg-black/95 backdrop-blur-xl border-l border-white/10 z-50 overflow-hidden"
+            className={`fixed top-0 right-0 h-full w-full max-w-2xl backdrop-blur-xl border-l
+            bg-black/20 ${colors.border} z-50 overflow-hidden`}
           >
             <div className="h-full flex flex-col">
               {/* Header */}
               <div className="flex-shrink-0 p-6 border-b border-white/10">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex-col items-center space-y-2">
-                    <h2 className="text-2xl lg:text-3xl font-bold text-white font-sf">
+                    <h2 className="text-2xl lg:text-3xl tracking-wide font-bold text-white font-sf">
                       {project.title}
                     </h2>
                     <p
-                      className={`text-lg text-purple-200 font-medium font-sf`}
+                      className={`text-lg text-purple-200 tracking-wide font-medium font-sf`}
+                      style={{ color: colors.accent }}
                     >
                       {project.subtitle}
                     </p>

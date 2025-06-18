@@ -1,18 +1,12 @@
 "use client";
 
-import type React from "react";
 import { motion } from "framer-motion";
-import { useState } from "react";
 import {
   IconArrowLeft,
   IconMail,
   IconBrandLinkedin,
   IconBrandGithub,
   IconMapPin,
-  IconSend,
-  IconUser,
-  IconMessage,
-  IconSparkles,
 } from "@tabler/icons-react";
 import GeometricBackground from "../GeometricBackground";
 
@@ -21,56 +15,42 @@ interface ContactPageProps {
 }
 
 export default function ContactPage({ onBack }: ContactPageProps) {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    setIsSubmitting(false);
-    setFormData({ name: "", email: "", subject: "", message: "" });
-  };
-
   const contactMethods = [
     {
       icon: <IconMail size={30} />,
       title: "Email",
       value: "manish.na26@gmail.com",
       href: "mailto:manish.na26@gmail.com",
+      bg: "bg-gradient-to-br from-[#8f2323]/15 to-[#ee5684]/20",
+      ibg: "bg-[#3d1a2e]",
+      accent: "text-[#ee5684]",
     },
     {
       icon: <IconBrandLinkedin size={30} />,
       title: "LinkedIn",
       value: "Manish N",
       href: "https://www.linkedin.com/in/manish-n-zeuzo/",
+      bg: "bg-gradient-to-br from-[#0b162b]/15 to-[#5689ee]/20",
+      ibg: "bg-[#1a2c3d]",
+      accent: "text-[#5689ee]",
     },
     {
       icon: <IconBrandGithub size={30} />,
       title: "GitHub",
       value: "ZeuzoxD",
       href: "https://github.com/ZeuzoxD",
+      bg: "bg-gradient-to-br from-[#4a005f]/15 to-[#7f56ee]/20",
+      ibg: "bg-[#2e1a3d]",
+      accent: "text-[#7f56ee]",
     },
     {
       icon: <IconMapPin size={30} />,
       title: "Location",
       value: "Bengaluru, India",
       href: "#",
+      bg: "bg-gradient-to-br from-[#8d6e00]/15 to-[#ee9a56]/20",
+      ibg: "bg-[#3d331a]",
+      accent: "text-[#ee9a56]",
     },
   ];
 
@@ -136,155 +116,45 @@ export default function ContactPage({ onBack }: ContactPageProps) {
             </h1>
 
             <p className="text-lg md:text-xl max-w-3xl mx-auto leading-relaxed tracking-wide">
-              Ready to collaborate on something amazing? I'm always excited to
-              discuss new projects and innovative ideas.
+              These are the different channels through which you can reach out
+              to me. Simply click on the card.
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-2 pt-8 mt-8 gap-12">
+          <div className="flex items-center justify-center">
             {/* Contact Methods */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="space-y-8"
+              className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 pt-8 mt-8 gap-6 mb-16"
             >
-              <div className="space-y-4">
-                {contactMethods.map((method, index) => (
-                  <motion.a
-                    key={index}
-                    href={method.href}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
-                    whileHover={{ scale: 1.02, x: 5 }}
-                    className="flex space-x-6 p-6 bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl hover:border-purple-500/30 hover:bg-white/10 transition-all duration-300 group"
-                  >
-                    <div
-                      className="p-3 rounded-xl bg-purple-500/20 text-purple-300 
-                      group-hover:scale-110 transition-transform duration-300"
-                    >
-                      {method.icon}
-                    </div>
-                    <div className="text-start">
-                      <h3 className="text-lg font-medium tracking-wide text-white mb-1">
-                        {method.title}
-                      </h3>
-                      <p className="text-gray-400 tracking-wider group-hover:text-purple-300 transition-colors duration-300">
-                        {method.value}
-                      </p>
-                    </div>
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-8 hover:border-purple-500/30 transition-all duration-300"
-            >
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="p-2 bg-purple-500/20 rounded-lg">
-                  <IconSparkles size={24} className="text-purple-300" />
-                </div>
-                <h2 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  Send a Message
-                </h2>
-              </div>
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-4">
-                  <div className="relative">
-                    <IconUser
-                      size={20}
-                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                    />
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="Your Name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-purple-400/50 transition-all duration-300"
-                    />
-                  </div>
-
-                  <div className="relative">
-                    <IconMail
-                      size={20}
-                      className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                    />
-                    <input
-                      type="email"
-                      name="email"
-                      placeholder="Your Email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-purple-400/50 transition-all duration-300"
-                    />
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <IconMessage
-                    size={20}
-                    className="absolute left-3 top-4 text-gray-400"
-                  />
-                  <input
-                    type="text"
-                    name="subject"
-                    placeholder="Subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full pl-10 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-purple-400/50 transition-all duration-300"
-                  />
-                </div>
-
-                <textarea
-                  name="message"
-                  placeholder="Your message..."
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={6}
-                  className="w-full p-4 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-purple-400/50 transition-all duration-300 resize-none"
-                />
-
-                <motion.button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-medium rounded-xl transition-all duration-300 hover:from-purple-700 hover:to-pink-700 disabled:opacity-50"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+              {contactMethods.map((method, index) => (
+                <motion.a
+                  key={index}
+                  href={method.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                  whileHover={{ scale: 1.02, x: 5 }}
+                  className={`group  flex-col p-4 space-y-4 backdrop-blur-xl
+                border border-white/10 rounded-xl ${method.bg} text-left 
+                hover:bg-white/5 transition-all duration-300`}
                 >
-                  {isSubmitting ? (
-                    <div className="flex items-center justify-center space-x-2">
-                      <motion.div
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          duration: 1,
-                          repeat: Number.POSITIVE_INFINITY,
-                          ease: "linear",
-                        }}
-                      >
-                        <IconSparkles size={20} />
-                      </motion.div>
-                      <span>Sending...</span>
-                    </div>
-                  ) : (
-                    <div className="flex items-center justify-center space-x-2">
-                      <IconSend size={20} />
-                      <span>Send Message</span>
-                    </div>
-                  )}
-                </motion.button>
-              </form>
+                  <h3 className="text-lg font-medium tracking-wider text-white mb-4">
+                    {method.title}
+                  </h3>
+                  <div
+                    className={`p-4 mb-4 items-center flex gap-4 rounded-xl ${method.ibg} ${method.accent} 
+                      group-hover:scale-102 transition-transform duration-300`}
+                  >
+                    {method.icon}
+                    <p className="text-gray-400 tracking-wide group-hover:text-purple-300 transition-colors duration-300">
+                      {method.value}
+                    </p>
+                  </div>
+                </motion.a>
+              ))}
             </motion.div>
           </div>
         </div>

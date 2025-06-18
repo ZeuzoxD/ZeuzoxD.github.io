@@ -5,7 +5,7 @@ import { IconGhost3 } from "@tabler/icons-react";
 
 interface Props {
   projects: Project[];
-  onClick?: (project: Project) => void;
+  onClick?: (project: Project, index: number) => void;
 }
 
 export default function ProjectGrid({ projects, onClick }: Props) {
@@ -62,7 +62,7 @@ export default function ProjectGrid({ projects, onClick }: Props) {
           key={project.id}
           project={project}
           index={index}
-          onClick={onClick}
+          onClick={(project) => onClick?.(project, index)}
         />
       ))}
     </motion.div>

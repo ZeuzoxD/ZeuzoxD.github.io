@@ -10,6 +10,7 @@ export const WorkSection = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedProjectIndex, setSelectedProjectIndex] = useState<number>(0);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const filteredProjects = projects.filter((project) => {
@@ -26,8 +27,9 @@ export const WorkSection = () => {
     return matchesSearch && matchesFilter;
   });
 
-  const openProjectDrawer = (project: Project) => {
+  const openProjectDrawer = (project: Project, index: number) => {
     setSelectedProject(project);
+    setSelectedProjectIndex(index);
     setIsDrawerOpen(true);
   };
 
@@ -60,6 +62,7 @@ export const WorkSection = () => {
       <ProjectDrawer
         isOpen={isDrawerOpen}
         project={selectedProject}
+        index={selectedProjectIndex}
         onClose={closeProjectDrawer}
       />
     </motion.section>

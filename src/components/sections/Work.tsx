@@ -69,7 +69,7 @@ export default function WorksPage({ onBack }: WorksPageProps) {
           >
             <motion.div
               initial={{ width: 0 }}
-              whileInView={{ width: "250px" }}
+              animate={{ width: "200px" }}
               transition={{ duration: 1, delay: 0.3 }}
               className="h-[2px] bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"
             />
@@ -134,16 +134,16 @@ export default function WorksPage({ onBack }: WorksPageProps) {
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
             className="space-y-4"
           >
             <motion.div
               initial={{ width: 0 }}
-              whileInView={{ width: "150px" }}
+              animate={{ width: "150px" }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="h-px bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"
+              className="h-[2px] bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"
             />
 
             <motion.h2

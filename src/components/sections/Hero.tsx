@@ -279,12 +279,12 @@ export default function Hero() {
                 },
                 {
                   icon: <IconBrandLinkedin size={30} stroke={1.5} />,
-                  href: "#",
+                  href: "https://www.linkedin.com/in/manish-n-zeuzo/",
                   label: "LinkedIn",
                 },
                 {
                   icon: <IconMail size={30} stroke={1.5} />,
-                  href: "#",
+                  href: "mailto:manish.na26@gmail.com",
                   label: "Email",
                 },
               ].map((social, index) => (
