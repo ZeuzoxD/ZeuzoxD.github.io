@@ -143,7 +143,7 @@ export const projects: Project[] = [
       {
         type: "text",
         content:
-          "In its untuned state, our custom LLM highlights MHA's high computational demands without optimizations. By comparison, advanced LLMs (e.g., BERT, LLaMA, BART) use high-performance, optimized libraries that reduce MHA’s resource needs, yet MHA remains inherently resource-intensive, concluding that MHA is the most resource-intensive and also serving as foundational work for my Undergrad Thesis.",
+          "In its most untuned, bare-bone state, our custom LLM highlights MHA's high computational demands without any optimizations. By comparison, advanced LLMs (e.g., BERT, LLaMA, BART) use high-performance, optimized libraries that reduce MHA’s resource needs, yet MHA remains inherently resource-intensive, concluding that MHA is the most resource-intensive and also serving as foundational work for my Undergrad Thesis.",
       },
       {
         type: "image",
@@ -299,6 +299,16 @@ export const projects: Project[] = [
       {
         type: "heading",
         level: 2,
+        content: "Introduction",
+      },
+      {
+        type: "text",
+        content:
+          "This project focuses on developing a machine learning-based intrusion detection system to classify network traffic as either normal or potentially malicious. Using a labeled dataset of network activity, various models were trained to identify patterns that distinguish legitimate behavior from attacks.",
+      },
+      {
+        type: "heading",
+        level: 2,
         content: "Pipeline Overview",
       },
       {
@@ -312,6 +322,27 @@ export const projects: Project[] = [
           "<strong>Evaluation:</strong> Achieved highest accuracy using Random Forest with tuned parameters.",
         ],
         styles: "list-decimal pl-5 text-gray-300",
+      },
+      {
+        type: "heading",
+        level: 3,
+        content: "Model Evaluation and Metrics",
+      },
+      {
+        type: "text",
+        content:
+          "The classification report provided precision, recall, and F1-scores across all traffic types. Evaluation focused on both common and rare attack patterns to assess the model’s generalization.",
+      },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "<strong>High-performing classes:</strong> These categories had abundant training data and clear distinguishing features. As a result, they were classified with near-perfect F1-scores.",
+          "<strong>Low-performing classes:</strong> These were significantly underrepresented in the dataset. Limited support, overlapping characteristics, and noise in the data made them harder to distinguish, leading to near-zero F1-scores.",
+          "<strong>Macro-average F1 score:</strong> This metric was pulled down due to poor performance on the minority classes, which are given equal weight regardless of support.",
+          "<strong>Weighted-average F1 score:</strong> This remained high because the model performed well on the dominant classes, which made up the majority of the dataset and influenced the overall score more heavily.",
+        ],
+        styles: "list-disc pl-5 text-gray-300",
       },
       {
         type: "link",
