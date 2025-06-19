@@ -5,7 +5,7 @@ export const projects: Project[] = [
     id: "systolic-scheduler-4x4",
     title: "Systolic Scheduler for 4x4 Matrix Multiplication",
     subtitle: "Pipelined Matrix Control with a Systolic Array",
-    category: ["Hardware Design", "RTL Design"],
+    category: ["Hardware Design", "Digital Design"],
     shortdescription:
       "A Verilog based scheduler for driving a 4x4 systolic array built for efficient matrix multiplication",
     longdescription:
@@ -103,7 +103,7 @@ export const projects: Project[] = [
       "Benchmarked a custom LLM and leading models like BERT, BART, and LLaMA 3.1 (8B) to identify transformer bottlenecks and guide hardware-aware optimizations.",
     longdescription:
       "This project involved profiling a custom-built LLM alongside large models like BERT, BART, and LLaMA 3.1 (8B) on high-performance systems at PESU CAVE Labs. The objective was to identify computational bottlenecks in transformer-based architectures—particularly Multi-Head Attention (MHA). The findings offer foundational insights for developing efficient inference pipelines on low-power or constrained hardware and contribute directly to the groundwork for my undergraduate thesis.",
-    year: 2025,
+    year: 2024,
     type: "LLM Benchmarking",
     team: "Solo Project",
     status: "Completed",
@@ -157,7 +157,7 @@ export const projects: Project[] = [
     id: "riscv-attention-accelerator",
     title: "Accelerating Attention for Embedded RISC-V CPUs",
     subtitle: "Undergraduate Thesis: Enabling SLMs on ultra-efficient hardware",
-    category: ["AIML", "Hardware Design", "Research", "LLM", "RTL Design"],
+    category: ["AIML", "Hardware Design", "Research", "LLM", "Digital Design"],
     shortdescription:
       "Designing a hardware-efficient attention accelerator to deploy TinyLLMs on open-source RISC-V CPUs.",
     longdescription:
@@ -327,6 +327,66 @@ export const projects: Project[] = [
       },
     ],
   },
+  {
+    id: "fir-filter-verilog",
+    title: "FIR Filter Implementations: Basic & Pipelined Architecture",
+    subtitle: "Comparing Serial & Parallel FIR Filters in Verilog",
+    category: ["Digital Design", "Hardware Design", "Digital Design"],
+    shortdescription:
+      "Designed a FIR filter in Verilog with both serial and parallel implementations. Compared their performance using waveform simulations.",
+    year: 2025,
+    team: "Solo Project",
+    status: "Completed",
+    tags: [
+      "FIR",
+      "Digital Filter",
+      "Verilog",
+      "Parallelism",
+      "Signal Processing",
+    ],
+    tech: ["Verilog", "GTKWave", "Icarus Verilog"],
+    featured: false,
+    codeLink: "https://github.com/ZeuzoxD/parallel-fir",
+    contentBlocks: [
+      {
+        type: "heading",
+        level: 2,
+        content: "Design Overview",
+      },
+      {
+        type: "text",
+        content:
+          "This project explores two architectural approaches to implementing a Finite Impulse Response (FIR) filter using Verilog. The first design adopts a traditional serial approach—computing one output sample per clock cycle—while the second leverages parallelism through pipelining, significantly improving throughput and efficiency. Both designs are simulated and verified using GTKWave.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "System Architecture & Flow",
+      },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "<strong>fir_basic.v:</strong> Implements a baseline FIR filter where each multiplication and addition occurs sequentially.",
+          "<strong>fir_parallel.v:</strong> A pipelined FIR design that computes results in overlapping stages to increase throughput.",
+          "<strong>fir_tb.v:</strong> Unified testbench driving both modules with identical input sequences for waveform comparison.",
+        ],
+      },
+      {
+        type: "image",
+        src: "/images/projectimgs/fir-parallel/wave.png",
+        alt: "Waveform comparison of serial and parallel FIR filter",
+        caption: "Output waveform showing both FIR versions in simulation",
+        layout: "full-width",
+      },
+      {
+        type: "link",
+        href: "https://github.com/ZeuzoxD/parallel-fir",
+        text: "Explore the GitHub Repository",
+        icon: "github",
+      },
+    ],
+  },
 ];
 
-export const categories = ["All", "RTL Design", "AIML", "Research"];
+export const categories = ["All", "Digital Design", "AIML", "Research"];
