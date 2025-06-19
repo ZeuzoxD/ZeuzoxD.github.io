@@ -1,14 +1,10 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  IconX,
-  IconBrandGithub,
-  IconCalendar,
-  IconUsers,
-} from "@tabler/icons-react";
+import { IconX, IconCalendar, IconUsers } from "@tabler/icons-react";
 import { Badge } from "./badge";
 import { Project } from "@/data/type";
+import ContentBlockRenderer from "../ContentBlockRenderer";
 
 interface ProjectDrawerProps {
   project: Project | null;
@@ -77,7 +73,7 @@ export default function ProjectDrawer({
             <div className="h-full flex flex-col">
               {/* Header */}
               <div className="flex-shrink-0 p-6 border-b border-white/10">
-                <div className="flex items-center justify-between mb-2">
+                <div className="flex items-start justify-between mb-2">
                   <div className="flex-col items-center space-y-2">
                     <h2 className="text-2xl lg:text-3xl tracking-wide font-bold text-white font-sf">
                       {project.title}
@@ -92,14 +88,15 @@ export default function ProjectDrawer({
 
                   <motion.button
                     onClick={onClose}
-                    className="p-3 hover:bg-white/10 rounded-xl transition-colors duration-200"
+                    className="p-3 backdrop-blur-lg"
                     whileHover={{ scale: 1.05 }}
+                    style={{ border: "none", background: "transparent" }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <IconX
-                      size={24}
-                      stroke={1.5}
-                      className="text-gray-400 hover:text-white"
+                      size={30}
+                      stroke={2}
+                      className="text-red-400 hover:text-red-300 transition-colors duration-200"
                     />
                   </motion.button>
                 </div>
@@ -122,65 +119,24 @@ export default function ProjectDrawer({
               </div>
               {/* Content */}
               <div className="flex-1 overflow-y-auto p-6 space-y-8">
-                {/* Description */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.1 }}
-                >
-                  <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
-                    Project Overview
-                  </h3>
-                  <p className="leading-tight font-medium">
-                    {project.longdescription}
-                  </p>
-                </motion.div>
-              </div>
-
-              {/* Images */}
-              {project.image && project.image.length > 0 && (
-                <div className="flex-1 overflow-y-auto p-6 space-y-8">
+                {project.contentBlocks && project.contentBlocks.length > 0 ? (
+                  <ContentBlockRenderer blocks={project.contentBlocks} />
+                ) : (
+                  //Fallback
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
                   >
                     <h3 className="text-lg font-semibold text-white mb-2 flex items-center">
-                      Project Images
+                      Project Overview
                     </h3>
-                    <div className="flex flex-wrap gap-4">
-                      {project.image.map((i, it) => (
-                        <motion.img
-                          key={it}
-                          src={i}
-                          alt={project.title}
-                          className="w-full h-auto rounded-xl"
-                        />
-                      ))}
-                    </div>
+                    <p className="leading-tight font-medium">
+                      {project.longdescription}
+                    </p>
                   </motion.div>
-                </div>
-              )}
-              {/* Footer Actions */}
-              <div className="flex-shrink-0 p-6 border-t border-white/10">
-                <div className="flex space-x-3">
-                  <motion.a
-                    href={project.codeLink}
-                    className={`flex-1 flex items-center justify-center space-x-2 py-3 
-                    px-4 bg-white/5 backdrop-blur-sm hover:bg-white/5 rounded-xl 
-                    transition-all duration-300 border hover:border-white/20 
-                    `}
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                  >
-                    <IconBrandGithub
-                      size={20}
-                      stroke={1.5}
-                      className="text-purple-600"
-                    />
-                    <span className={`text-purple-400`}>View Code</span>
-                  </motion.a>
-                </div>
+                )}
+                {/* Description */}
               </div>
             </div>
           </motion.div>

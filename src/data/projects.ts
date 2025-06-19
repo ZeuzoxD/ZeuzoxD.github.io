@@ -2,170 +2,331 @@ import { Project } from "./type.ts";
 
 export const projects: Project[] = [
   {
-    id: "fpga-vision-core",
-    title: "FPGA Vision Core",
-    subtitle: "Real-Time Edge Detection Accelerator",
+    id: "systolic-scheduler-4x4",
+    title: "Systolic Scheduler for 4x4 Matrix Multiplication",
+    subtitle: "Pipelined Matrix Control with a Systolic Array",
+    category: ["Hardware Design", "RTL Design"],
     shortdescription:
-      "An FPGA-accelerated Sobel edge detector for low-latency image processing.",
+      "A Verilog based scheduler for driving a 4x4 systolic array built for efficient matrix multiplication",
     longdescription:
-      "Designed a hardware accelerator for real-time edge detection using Verilog. Achieved 60+ FPS on 640x480 resolution using a pipelined architecture targeting Intel Cyclone V.",
-    year: 2024,
+      "This project implements a hardware scheduler in Verilog to drive a 4x4 systolic array for efficient matrix multiplication. The scheduler controls the flow of data through the array, architecture for matrix multiplication.The project was developed in two phases: 1. Standalone Scheduler Design – Designed and verified the functionality of the scheduler. 2. Full Integration – Connected the scheduler to a 4x4 Systolic Array (design by a collaborator) and verified its operation for matrix multiplication.",
+    year: 2025,
     type: "Hardware Design",
     team: "Solo Project",
     status: "Completed",
-    tags: ["FPGA", "Vision", "Edge Detection"],
-    tech: ["Verilog", "Quartus", "ModelSim"],
+    tags: ["Scheduler", "Systolic Array", "Matrix Multiplication", "RTL"],
+    tech: ["Verilog", "GTKWave"],
     featured: true,
-    codeLink: "https://github.com/yourname/fpga-vision-core",
+    codeLink: "https://github.com/ZeuzoxD/systolic-scheduler-4x4",
+    contentBlocks: [
+      {
+        type: "heading",
+        level: 2,
+        content: "Project Overview & Goals",
+      },
+      {
+        type: "text",
+        content:
+          "The systolic scheduler coordinates the data and control flow required to perform matrix multiplication on a 4×4 systolic array. By designing the scheduler as a reusable, modular component in Verilog, it enables pipelined execution.",
+      },
+      {
+        type: "heading",
+        level: 3,
+        content: "Development Phases",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "<strong>Phase 1:</strong> Standalone Scheduler Design – Developed and tested the scheduler in isolation with a custom testbench. Verified all control and timing signals using GTKWave.",
+          "<strong>Phase 2:</strong> Full System Integration – Connected the scheduler to a collaborator’s 4×4 systolic array design. Verified complete matrix multiplication and evaluated correct timing behavior.",
+        ],
+        styles: "list-decimal pl-5",
+      },
+      {
+        type: "link",
+        href: "https://github.com/ZeuzoxD/systolic-scheduler-4x4",
+        text: "View the Source Code on GitHub",
+        icon: "github",
+      },
+    ],
   },
   {
-    id: "gpgpu-core",
-    title: "Tiny GPGPU Core",
-    subtitle: "SIMT-style General Purpose GPU Design",
+    id: "custom-llm-fcc",
+    title: "Custom LLM from Scratch in Python",
+    subtitle: "Implementing Transformer Architecture from Scratch",
+    category: ["LLM", "AIML"],
     shortdescription:
-      "Built a simplified GPGPU core supporting vector arithmetic and shared memory.",
-    longdescription:
-      "Implemented a small-scale, 4-thread SIMT GPU core supporting basic arithmetic and memory operations with a banked register file. Optimized for minimal area footprint.",
-    year: 2025,
-    type: "Architecture",
-    team: "Solo Project",
-    status: "In Progress",
-    tags: ["GPGPU", "Computer Architecture", "Parallelism"],
-    tech: ["SystemVerilog", "GTKWave", "RISC-V ISA"],
-    featured: true,
-    codeLink: "https://github.com/yourname/tiny-gpgpu",
-  },
-  {
-    id: "aethersanct",
-    title: "AETHERSANCT",
-    subtitle: "Psychological Horror Adventure Game",
-    shortdescription:
-      "Narrative-heavy 2.5D horror game exploring trauma and fragmented memory.",
-    longdescription:
-      "Unreal Engine-based narrative game where players undergo surreal therapy-like sequences. Designed unique memory recovery mechanics and multiple emotionally-driven endings.",
-    year: 2025,
-    type: "Game Development",
-    team: "Solo Project",
-    status: "Ongoing",
-    tags: ["Game", "Unreal", "Narrative"],
-    tech: ["Unreal Engine 5", "Blueprints", "C++"],
-    featured: true,
-    demoLink: "https://aethersanct.vercel.app",
-  },
-  {
-    id: "verilog-mesi-sim",
-    title: "MESI Cache Protocol Simulator",
-    subtitle: "4-core cache coherence protocol implementation",
-    shortdescription:
-      "Simulated MESI protocol in Verilog for multi-core cache coherence.",
-    longdescription:
-      "Implemented the MESI protocol across 4 simulated cores with testbench verification. Demonstrated invalidation and sharing behaviors with random access patterns.",
-    year: 2025,
-    type: "RTL Simulation",
-    team: "Research Team",
-    status: "Completed",
-    tags: ["Cache", "Coherence", "MESI"],
-    tech: ["Verilog", "ModelSim", "Python"],
-    codeLink: "https://github.com/yourname/mesi-sim",
-  },
-  {
-    id: "llm-dashboard",
-    title: "Vision + LLM Dashboard",
-    subtitle: "AI-assisted Technical Analysis Interface",
-    shortdescription:
-      "Built a private dashboard with local LLM + vision model integration.",
-    longdescription:
-      "Replaced Gemini API with LLaVA and Ollama-based local models for secure financial chart interpretation and report generation.",
-    year: 2025,
-    type: "AI Tooling",
-    team: "Solo Project",
-    status: "In Progress",
-    tags: ["LLM", "Vision", "Dashboard"],
-    tech: ["LLaVA", "Ollama", "Python", "Plotly", "FastAPI"],
-    codeLink: "https://github.com/yourname/llm-dashboard",
-  },
-  {
-    id: "model-agnostic-trainer",
-    title: "Model-Agnostic Trainer",
-    subtitle: "Flexible Hyperparameter Optimization Framework",
-    shortdescription:
-      "Training pipeline agnostic to model architecture and size.",
-    longdescription:
-      "Designed a generic pipeline for hyperparameter sweeps using Bayesian search and random grid strategies, supporting PyTorch, Keras, and ONNX models.",
+      "Built a minimal Transformer-based language model in Python to deeply understand LLM internals and training dynamics.",
     year: 2024,
-    type: "ML Tooling",
     team: "Solo Project",
     status: "Completed",
-    tags: ["Training", "Hyperparameter Tuning"],
-    tech: ["Python", "Optuna", "WandB", "PyTorch"],
-    codeLink: "https://github.com/yourname/model-agnostic-trainer",
-  },
-  {
-    id: "lightweight-crypto-suite",
-    title: "Lightweight Crypto Suite",
-    subtitle: "Custom Trivium & Simon FPGA Cores",
-    shortdescription:
-      "Cryptographic core implementations optimized for constrained devices.",
-    longdescription:
-      "Implemented Trivium and Simon cipher cores in SystemVerilog with area and power constraints in mind. Verified using side-channel resistance benchmarks.",
-    year: 2025,
-    type: "Security & Hardware",
-    team: "Research Team",
-    status: "Completed",
-    tags: ["Cryptography", "FPGA", "Embedded"],
-    tech: ["SystemVerilog", "Vivado", "Python"],
-    codeLink: "https://github.com/yourname/lightweight-crypto-suite",
-  },
-  {
-    id: "adaptive-cache",
-    title: "Adaptive Cache Simulator",
-    subtitle: "Dynamically resizing L1 cache design",
-    shortdescription:
-      "Simulated an L1 cache with runtime associativity adaptation.",
-    longdescription:
-      "Designed and tested a cache simulator where the associativity dynamically adapts to access patterns. Reduced miss rate by up to 17% over fixed associativity designs.",
-    year: 2023,
-    type: "Research Project",
-    team: "Research Team",
-    status: "Completed",
-    tags: ["Cache", "Simulation", "Dynamic Tuning"],
-    tech: ["C++", "Python", "Pandas"],
-    codeLink: "https://github.com/yourname/adaptive-cache",
-  },
-  {
-    id: "portfolio-v2",
-    title: "Portfolio Website V2",
-    subtitle: "Interactive and Animated Developer Portfolio",
-    shortdescription:
-      "Rebuilt portfolio with dynamic routing and motion animations.",
-    longdescription:
-      "Used Next.js with Framer Motion and Tailwind CSS to create a lightweight, fast-loading portfolio featuring project filters, theme toggle, and featured gallery.",
-    year: 2025,
-    type: "Web Development",
-    team: "Solo Project",
-    status: "Completed",
-    tags: ["Web", "Portfolio", "Animation"],
-    tech: ["Next.js", "Framer Motion", "Tailwind CSS"],
-    featured: true,
-    demoLink: "https://yourname.vercel.app",
-    codeLink: "https://github.com/yourname/portfolio-v2",
-  },
-  {
-    id: "softmax-array",
-    title: "Systolic Softmax Accelerator",
-    subtitle: "Efficient softmax for transformer inference",
-    shortdescription:
-      "Designed systolic array-based softmax hardware with precision-aware tuning.",
-    longdescription:
-      "Built a systolic array implementation of softmax optimized for transformers. Analyzed precision impact on denominator stability and implemented pipelining for throughput.",
-    year: 2025,
-    type: "Hardware Accelerator",
-    team: "Research Team",
-    status: "In Progress",
-    tags: ["Accelerator", "Transformer", "Systolic Array"],
-    tech: ["SystemVerilog", "Vivado", "NumPy", "Matplotlib"],
+    tags: ["LLM", "Transformer", "Attention", "Deep Learning", "Python"],
+    tech: ["Python", "NumPy", "Pandas", "TensorFlow"],
     featured: false,
+    contentBlocks: [
+      {
+        type: "heading",
+        level: 2,
+        content: "Project Goal",
+      },
+      {
+        type: "text",
+        content:
+          "Built a custom bare-bone Transformer model in Python following freecodecamp youtube tutorial. The objective was to implement a Transformer-based LLM from scratch to understand each architectural components. This helped ground future research work in transformer optimization.",
+      },
+      {
+        type: "heading",
+        level: 3,
+        content: "Reference Architecture",
+      },
+      {
+        type: "link",
+        href: "https://arxiv.org/abs/1706.03762",
+        text: "Attention Is All You Need (Vaswani et al., 2017)",
+        icon: "file-text",
+      },
+      {
+        type: "link",
+        href: "https://youtu.be/UU1WVnMk4E8?si=QdR0UzLqE8VuIR4U",
+        text: "Create a LLM from Scratch with Python - FreeCodeCamp",
+        icon: "youtube",
+      },
+    ],
+  },
+  {
+    id: "llm-profiling-hpc",
+    title: "LLM Performance Profiling",
+    subtitle: "Profiling Transformers to Identify Bottlenecks",
+    category: ["LLM", "AIML", "Research"],
+    shortdescription:
+      "Benchmarked a custom LLM and leading models like BERT, BART, and LLaMA 3.1 (8B) to identify transformer bottlenecks and guide hardware-aware optimizations.",
+    longdescription:
+      "This project involved profiling a custom-built LLM alongside large models like BERT, BART, and LLaMA 3.1 (8B) on high-performance systems at PESU CAVE Labs. The objective was to identify computational bottlenecks in transformer-based architectures—particularly Multi-Head Attention (MHA). The findings offer foundational insights for developing efficient inference pipelines on low-power or constrained hardware and contribute directly to the groundwork for my undergraduate thesis.",
+    year: 2025,
+    type: "LLM Benchmarking",
+    team: "Solo Project",
+    status: "Completed",
+    tags: ["Benchmarking", "Transformer", "HPC", "Profiling", "MHA", "Thesis"],
+    tech: ["PyTorch", "Transformers", "NVIDIA GPU", "Python", "Huggingface"],
+    featured: true,
+    contentBlocks: [
+      {
+        type: "heading",
+        level: 2,
+        content: "Project Objectives",
+      },
+      {
+        type: "text",
+        content:
+          "To gain deeper insights into Transformer mechanics I built a custom LLM from scratch. The outputs of this model was benchmarked on high-performance systems at <strong>PESU CAVE Labs</strong> and compared against well-established, highly optimized models such as BERT, LAMA and BART to assess baseline performance. And since these results are hardware dependent, its necessary to mention it.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "Hardware Configuration",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "<strong>Processor:</strong> Intel Core i9-13900k",
+          "<strong>Memory:</strong> 128GB DDR5 RAM",
+          "<strong>GPU:</strong> NVIDIA RTX 4090 Ti with 24GB VRAM",
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "Inferences",
+      },
+      {
+        type: "text",
+        content:
+          "In its untuned state, our custom LLM highlights MHA's high computational demands without optimizations. By comparison, advanced LLMs (e.g., BERT, LLaMA, BART) use high-performance, optimized libraries that reduce MHA’s resource needs, yet MHA remains inherently resource-intensive, concluding that MHA is the most resource-intensive and also serving as foundational work for my Undergrad Thesis.",
+      },
+      {
+        type: "image",
+        src: "/images/projectimgs/llm-profiling/PerformanceBenchmark.png",
+        alt: "comparison plot for MHA across models",
+        layout: "full-width",
+      },
+    ],
+  },
+  {
+    id: "riscv-attention-accelerator",
+    title: "Accelerating Attention for Embedded RISC-V CPUs",
+    subtitle: "Undergraduate Thesis: Enabling SLMs on ultra-efficient hardware",
+    category: ["AIML", "Hardware Design", "Research", "LLM", "RTL Design"],
+    shortdescription:
+      "Designing a hardware-efficient attention accelerator to deploy TinyLLMs on open-source RISC-V CPUs.",
+    longdescription:
+      "This ongoing undergraduate thesis focuses on developing a custom hardware accelerator for optimizing attention mechanisms, particularly Multi-Head Self-Attention (MHSA), targeting embedded RISC-V cores. The project aims to enable deployment of Small Language Models (SLMs) in power- and resource-constrained environments using custom instructions, systolic array acceleration, and quantized softmax support.",
+    year: 2025,
+    type: "Undergraduate Thesis",
+    team: "Research Team",
+    status: "Ongoing",
+    tags: [
+      "Attention",
+      "Transformer",
+      "RISC-V",
+      "Accelerator",
+      "Embedded AI",
+      "Thesis",
+    ],
+    tech: ["Bluespec", "Verilog", "RISC-V", "CV32E40P"],
+    featured: true,
+    contentBlocks: [
+      {
+        type: "heading",
+        level: 2,
+        content: "Thesis Overview",
+      },
+      {
+        type: "text",
+        content:
+          "Guided by <strong>Dr. Sudarshan T S B (Dean of Research, PESU)</strong> and co-guided by <strong>Dr. Pramod Udupa (Intel)</strong>, this thesis investigates low-power transformer deployment. The aim is to design and map an efficient attention mechanism to an embedded open-source RISC-V core (CV32E40P).",
+      },
+      {
+        type: "heading",
+        level: 3,
+        content: "Work Completed So Far",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "Developed a baseline LLM and profiled Multi-Head Attention (MHA) on high-performance hardware.",
+          "Conducted in-depth literature review on sparse attention, systolic architectures, and hardware accelerators.",
+          "Selected CV32E40P as the target embedded CPU for accelerator integration.",
+        ],
+        styles: "list-decimal pl-5 text-gray-300",
+      },
+    ],
+  },
+  {
+    id: "hyperparameter-optimizer-cuda-openmp",
+    title: "Model-Agnostic Hyperparameter Optimization Engine",
+    subtitle: "Parallel Random Hyperparameter Search using CUDA and OpenMP",
+    category: ["AIML", "HPC", "CUDA"],
+    shortdescription:
+      "Designed a model-agnostic hyperparameter tuning engine using parallel random search using OpenMP and CUDA",
+    longdescription:
+      "Implemented a model-agnostic hyperparameter optimization system using random search. The engine runs in parallel on both GPU and CPU using CUDA and OpenMP, respectively. It benchmarks performance, tuning time, and optimality of parameters across models and platforms, demonstrating how system-level parallelism improves training workflows.",
+    year: 2025,
+    team: "Solo Project",
+    status: "Completed",
+    tags: [
+      "CUDA",
+      "OpenMP",
+      "Hyperparameter Tuning",
+      "Random Search",
+      "System Optimization",
+    ],
+    tech: ["Python", "CUDA", "OpenMP", "NumPy", "Scikit-learn"],
+    featured: false,
+    contentBlocks: [
+      {
+        type: "heading",
+        level: 2,
+        content: "Parallel Search Architecture",
+      },
+      {
+        type: "text",
+        content:
+          "The system generates and evaluates hyperparameter combinations using parallel random search. CUDA-enabled GPU threads simultaneously test configurations, while the CPU version uses OpenMP for multi-threading. Results are benchmarked for speed and parameter quality.",
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "Project Structure and Execution Flow",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "<strong>Hyperparameter Generation:</strong> A custom C program is used to generate randomized hyperparameter sets for the model.",
+          "<strong>Parallel Evaluation:</strong> Each CPU thread (OpenMP) or CUDA thread (GPU) generates one set of parameters and evaluates it using <code>evaluate_xgboost.py</code>.",
+          "<strong>Output Storage:</strong> The generated hyperparameters are saved to the <code>params/</code> folder, and their corresponding accuracy scores are written to the <code>results/</code> folder, out of which the hyperparameters with highest accuracy scores is selected.",
+          "<strong>Final Model Training:</strong> The selected hyperparameters are used in <code>train_final_model.py</code> to train the final model. This step is <em>not</em> part of the high-performance evaluation but is included for end-to-end demonstration.",
+        ],
+      },
+      {
+        type: "heading",
+        level: 2,
+        content: "Improvements",
+      },
+      {
+        type: "list",
+        ordered: false,
+        items: [
+          "~5× speedup with OpenMP on CPU over serial search.",
+          "Up to ~10–12× acceleration on GPU using CUDA.",
+          "Demonstrated generalizability across multiple ML models.",
+        ],
+      },
+      {
+        type: "link",
+        href: "https://github.com/KunalMaverick/HP_Project",
+        text: "View the GitHub Repository",
+        icon: "github",
+      },
+    ],
+  },
+  {
+    id: "network-intrusion-detection-nids",
+    title: "Network Intrusion Detection System (NIDS)",
+    subtitle:
+      "Machine learning pipeline for identifying malicious network traffic",
+    category: ["AIML"],
+    shortdescription:
+      "Built a full ML pipeline for detecting intrusions in network traffic using classification models and Bayesian hyperparameter optimization.",
+    longdescription:
+      "Developed a complete Network Intrusion Detection System (NIDS) using machine learning techniques. The pipeline includes data exploration, preprocessing, model selection, and tuning. Among models tested (Logistic Regression, SVM, KNN, Decision Tree, Random Forest), the Random Forest classifier showed the best performance. Hyperparameter tuning was done using Bayesian Optimization to further improve results.",
+    year: 2025,
+    team: "Solo Project",
+    status: "Completed",
+    tags: [
+      "NIDS",
+      "Cybersecurity",
+      "Machine Learning",
+      "Random Forest",
+      "Bayesian Optimization",
+    ],
+    tech: ["Python", "Scikit-learn", "Pandas", "Matplotlib"],
+    featured: false,
+    contentBlocks: [
+      {
+        type: "heading",
+        level: 2,
+        content: "Pipeline Overview",
+      },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "<strong>Data Preparation:</strong> Loaded traffic dataset, visualized distribution of normal vs malicious traffic.",
+          "<strong>Preprocessing:</strong>  Label encoding, scaling, and splitting for ML compatibility.",
+          "<strong>Modeling:</strong> Compared LR, SVM, KNN, Decision Tree, and Random Forest classifiers.",
+          "<strong>Optimization:</strong> Applied Bayesian Optimization to improve accuracy of top models.",
+          "<strong>Evaluation:</strong> Achieved highest accuracy using Random Forest with tuned parameters.",
+        ],
+        styles: "list-decimal pl-5 text-gray-300",
+      },
+      {
+        type: "link",
+        href: "https://pitch.com/v/nids-network-intrusion-detection-system-8tzucm",
+        text: "Final Report Slides (Pitch.com)",
+        icon: "file-text",
+      },
+      {
+        type: "link",
+        href: "https://github.com/ZeuzoxD/NIDS",
+        text: "View the GitHub Repository",
+        icon: "github",
+      },
+    ],
   },
 ];
 
-export const categories = ["All", "RTL Design", "ML", "LLM"];
+export const categories = ["All", "RTL Design", "AIML", "Research"];

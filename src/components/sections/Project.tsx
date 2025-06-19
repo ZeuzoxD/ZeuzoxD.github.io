@@ -23,7 +23,7 @@ export const WorkSection = () => {
         tech.toLowerCase().includes(searchTerm.toLowerCase()),
       );
     const matchesFilter =
-      activeFilter === "All" || project.category == activeFilter;
+      activeFilter === "All" || project.category?.includes(activeFilter);
     return matchesSearch && matchesFilter;
   });
 
