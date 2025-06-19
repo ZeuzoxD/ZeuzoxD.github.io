@@ -141,7 +141,7 @@ export default function ContactPage({ onBack }: ContactPageProps) {
                 border border-white/10 rounded-xl ${method.bg} text-left 
                 hover:bg-white/5 transition-all duration-300`}
                 >
-                  <h3 className="text-lg font-medium tracking-wider text-white mb-4">
+                  <h3 className="text-lg font-medium tracking-wider text-gray-400 mb-4">
                     {method.title}
                   </h3>
                   <div
@@ -149,7 +149,7 @@ export default function ContactPage({ onBack }: ContactPageProps) {
                       group-hover:scale-102 transition-transform duration-300`}
                   >
                     {method.icon}
-                    <p className="text-gray-400 tracking-wide group-hover:text-purple-300 transition-colors duration-300">
+                    <p className="text-white tracking-wide group-hover:text-purple-200 transition-colors duration-300">
                       {method.value}
                     </p>
                   </div>
