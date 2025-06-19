@@ -45,7 +45,7 @@ export const projects: Project[] = [
       },
       {
         type: "link",
-        href: "https://github.com/ZeuzoxD/systolic-scheduler-4x4",
+        href: "https://github.com/ZeuzoxD/4x4_systolic-scheduler",
         text: "View the Source Code on GitHub",
         icon: "github",
       },
