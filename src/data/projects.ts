@@ -164,7 +164,7 @@ export const projects: Project[] = [
       "This ongoing undergraduate thesis focuses on developing a custom hardware accelerator for optimizing attention mechanisms, particularly Multi-Head Self-Attention (MHSA), targeting embedded RISC-V cores. The project aims to enable deployment of Small Language Models (SLMs) in power- and resource-constrained environments using custom instructions, systolic array acceleration, and quantized softmax support.",
     year: 2025,
     type: "Undergraduate Thesis",
-    team: "Research Team",
+    team: "Research",
     status: "Ongoing",
     tags: [
       "Attention",

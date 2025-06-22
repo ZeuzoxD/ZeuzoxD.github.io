@@ -60,7 +60,7 @@ export type Project = {
   longdescription?: string;
   year: number;
   type?: string;
-  team: "Solo Project" | "Research Team";
+  team: "Solo Project" | "Research";
   status: "Completed" | "In Progress" | "Ongoing";
   tags: string[];
   tech: string[];
