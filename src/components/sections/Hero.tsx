@@ -312,9 +312,14 @@ export default function Hero() {
               >
                 <Button
                   style={{ borderRadius: "15px", borderWidth: "0px" }}
+                  onClick={() =>
+                    window.open(
+                      "https://drive.google.com/file/d/1uGHjtwmxD2AYl6U8fyRY13ayvyRCVLOO/",
+                      "_blank",
+                    )
+                  }
                   className="
-                  text-sm md:text-base font-semibold
-                  text-white
+                  text-sm md:text-base text-white
                   bg-gradient-to-r from-violet-500 to-pink-500
                   transition-all duration-300
                   shadow-lg
@@ -325,9 +330,9 @@ export default function Hero() {
                     whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <IconDownload size={16} stroke={1.5} className="" />
+                    <IconDownload size={18} stroke={2.5} className="" />
                   </motion.div>
-                  Resume
+                  <span className="font-semibold tracking-wide">CV</span>
                 </Button>
               </motion.div>
             </motion.div>

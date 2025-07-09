@@ -1,130 +1,17 @@
 import { Project } from "@/data/type";
-import { IconArrowUpRight, IconCalendar, IconUser } from "@tabler/icons-react";
+import {
+  IconArrowUpRight,
+  IconCalendarMonth,
+  IconTopologyStarRing3,
+} from "@tabler/icons-react";
 import { motion } from "framer-motion";
+import { colorVariants } from "./constants/colorVarients";
 
 type Props = {
   project: Project;
   index?: number;
   onClick?: (project: Project) => void;
 };
-
-const colorVariants = [
-  // Purple holographic variant - enhanced glassmorphism
-  {
-    bg: "bg-gradient-to-br from-purple-500/10 via-pink-500/8 to-blue-500/10",
-    bgOverlay:
-      "bg-gradient-to-br from-purple-400/20 via-pink-400/15 to-blue-400/20",
-    glassBg: "bg-white/[0.02]",
-    glassBlur: "backdrop-blur-3xl",
-    innerGlass:
-      "bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-white/[0.06]",
-    border: "border-purple-300/25",
-    borderHover: "hover:border-purple-300/50",
-    accent: "#c084fc",
-    textColor: "text-white",
-    subtitleColor: "text-purple-100/90",
-    shadowColor: "shadow-purple-500/30",
-    glowColor: "shadow-purple-400/60",
-    orb1: "from-purple-400/70 to-pink-400/70",
-    orb2: "from-blue-400/70 to-cyan-400/70",
-    statusBg: "bg-purple-500/15",
-    statusBorder: "border-purple-400/30",
-    metaBg: "bg-white/[0.08]",
-    metaBorder: "border-white/20",
-  },
-  // Pink/Red holographic variant
-  {
-    bg: "bg-gradient-to-br from-pink-500/10 via-red-500/8 to-orange-500/10",
-    bgOverlay:
-      "bg-gradient-to-br from-pink-400/20 via-red-400/15 to-orange-400/20",
-    glassBg: "bg-white/[0.02]",
-    glassBlur: "backdrop-blur-3xl",
-    innerGlass:
-      "bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-white/[0.06]",
-    border: "border-pink-300/25",
-    borderHover: "hover:border-pink-300/50",
-    accent: "#f472b6",
-    textColor: "text-white",
-    subtitleColor: "text-pink-100/90",
-    shadowColor: "shadow-pink-500/30",
-    glowColor: "shadow-pink-400/60",
-    orb1: "from-pink-400/70 to-red-400/70",
-    orb2: "from-orange-400/70 to-yellow-400/70",
-    statusBg: "bg-pink-500/15",
-    statusBorder: "border-pink-400/30",
-    metaBg: "bg-white/[0.08]",
-    metaBorder: "border-white/20",
-  },
-  // Green/Teal holographic variant
-  {
-    bg: "bg-gradient-to-br from-emerald-500/10 via-teal-500/8 to-cyan-500/10",
-    bgOverlay:
-      "bg-gradient-to-br from-emerald-400/20 via-teal-400/15 to-cyan-400/20",
-    glassBg: "bg-white/[0.02]",
-    glassBlur: "backdrop-blur-3xl",
-    innerGlass:
-      "bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-white/[0.06]",
-    border: "border-emerald-300/25",
-    borderHover: "hover:border-emerald-300/50",
-    accent: "#34d399",
-    textColor: "text-white",
-    subtitleColor: "text-emerald-100/90",
-    shadowColor: "shadow-emerald-500/30",
-    glowColor: "shadow-emerald-400/60",
-    orb1: "from-emerald-400/70 to-teal-400/70",
-    orb2: "from-cyan-400/70 to-blue-400/70",
-    statusBg: "bg-emerald-500/15",
-    statusBorder: "border-emerald-400/30",
-    metaBg: "bg-white/[0.08]",
-    metaBorder: "border-white/20",
-  },
-  // Blue/Indigo holographic variant
-  {
-    bg: "bg-gradient-to-br from-blue-500/10 via-indigo-500/8 to-purple-500/10",
-    bgOverlay:
-      "bg-gradient-to-br from-blue-400/20 via-indigo-400/15 to-purple-400/20",
-    glassBg: "bg-white/[0.02]",
-    glassBlur: "backdrop-blur-3xl",
-    innerGlass:
-      "bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-white/[0.06]",
-    border: "border-blue-300/25",
-    borderHover: "hover:border-blue-300/50",
-    accent: "#60a5fa",
-    textColor: "text-white",
-    subtitleColor: "text-blue-100/90",
-    shadowColor: "shadow-blue-500/30",
-    glowColor: "shadow-blue-400/60",
-    orb1: "from-blue-400/70 to-indigo-400/70",
-    orb2: "from-purple-400/70 to-pink-400/70",
-    statusBg: "bg-blue-500/15",
-    statusBorder: "border-blue-400/30",
-    metaBg: "bg-white/[0.08]",
-    metaBorder: "border-white/20",
-  },
-  // Rose/Magenta holographic variant
-  {
-    bg: "bg-gradient-to-br from-rose-500/10 via-fuchsia-500/8 to-violet-500/10",
-    bgOverlay:
-      "bg-gradient-to-br from-rose-400/20 via-fuchsia-400/15 to-violet-400/20",
-    glassBg: "bg-white/[0.02]",
-    glassBlur: "backdrop-blur-3xl",
-    innerGlass:
-      "bg-gradient-to-br from-white/[0.08] via-white/[0.02] to-white/[0.06]",
-    border: "border-rose-300/25",
-    borderHover: "hover:border-rose-300/50",
-    accent: "#fb7185",
-    textColor: "text-white",
-    subtitleColor: "text-rose-100/90",
-    shadowColor: "shadow-rose-500/30",
-    glowColor: "shadow-rose-400/60",
-    orb1: "from-rose-400/70 to-fuchsia-400/70",
-    orb2: "from-violet-400/70 to-purple-400/70",
-    statusBg: "bg-rose-500/15",
-    statusBorder: "border-rose-400/30",
-    metaBg: "bg-white/[0.08]",
-    metaBorder: "border-white/20",
-  },
-];
 
 const getStatusColor = (status: string) => {
   switch (status) {
@@ -209,7 +96,10 @@ export default function ProjectCard({ project, index = 0, onClick }: Props) {
                            shadow-2xl group-hover:${colors.metaBg} group-hover:border-white/30 
                            group-hover:scale-105 transition-all duration-400 w-fit`}
             >
-              <IconCalendar size={14} className="sm:w-[18px] sm:h-[18px]" />
+              <IconCalendarMonth
+                size={14}
+                className="sm:w-[18px] sm:h-[18px]"
+              />
               <span>{project.year}</span>
             </div>
             <div
@@ -218,8 +108,11 @@ export default function ProjectCard({ project, index = 0, onClick }: Props) {
                            shadow-2xl group-hover:${colors.metaBg} group-hover:border-white/30 
                            group-hover:scale-105 transition-all duration-400 w-fit`}
             >
-              <IconUser size={14} className="sm:w-[18px] sm:h-[18px]" />
-              <span>{project.team}</span>
+              <IconTopologyStarRing3
+                size={14}
+                className="sm:w-[18px] sm:h-[18px]"
+              />
+              <span>{project.type}</span>
             </div>
           </div>
         </div>

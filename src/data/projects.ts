@@ -8,16 +8,12 @@ export const projects: Project[] = [
     category: ["Hardware Design", "Digital Design"],
     shortdescription:
       "A Verilog based scheduler for driving a 4x4 systolic array built for efficient matrix multiplication",
-    longdescription:
-      "This project implements a hardware scheduler in Verilog to drive a 4x4 systolic array for efficient matrix multiplication. The scheduler controls the flow of data through the array, architecture for matrix multiplication.The project was developed in two phases: 1. Standalone Scheduler Design – Designed and verified the functionality of the scheduler. 2. Full Integration – Connected the scheduler to a 4x4 Systolic Array (design by a collaborator) and verified its operation for matrix multiplication.",
     year: 2025,
-    type: "Hardware Design",
-    team: "Solo Project",
+    type: "Project",
     status: "Completed",
     tags: ["Scheduler", "Systolic Array", "Matrix Multiplication", "RTL"],
     tech: ["Verilog", "GTKWave"],
     featured: true,
-    codeLink: "https://github.com/ZeuzoxD/systolic-scheduler-4x4",
     contentBlocks: [
       {
         type: "heading",
@@ -59,7 +55,7 @@ export const projects: Project[] = [
     shortdescription:
       "Built a minimal Transformer-based language model in Python to deeply understand LLM internals and training dynamics.",
     year: 2024,
-    team: "Solo Project",
+    type: "Project",
     status: "Completed",
     tags: ["LLM", "Transformer", "Attention", "Deep Learning", "Python"],
     tech: ["Python", "NumPy", "Pandas", "TensorFlow"],
@@ -101,11 +97,8 @@ export const projects: Project[] = [
     category: ["LLM", "AIML", "Research"],
     shortdescription:
       "Benchmarked a custom LLM and leading models like BERT, BART, and LLaMA 3.1 (8B) to identify transformer bottlenecks and guide hardware-aware optimizations.",
-    longdescription:
-      "This project involved profiling a custom-built LLM alongside large models like BERT, BART, and LLaMA 3.1 (8B) on high-performance systems at PESU CAVE Labs. The objective was to identify computational bottlenecks in transformer-based architectures—particularly Multi-Head Attention (MHA). The findings offer foundational insights for developing efficient inference pipelines on low-power or constrained hardware and contribute directly to the groundwork for my undergraduate thesis.",
     year: 2024,
-    type: "LLM Benchmarking",
-    team: "Solo Project",
+    type: "Project",
     status: "Completed",
     tags: ["Benchmarking", "Transformer", "HPC", "Profiling", "MHA", "Thesis"],
     tech: ["PyTorch", "Transformers", "NVIDIA GPU", "Python", "Huggingface"],
@@ -160,11 +153,8 @@ export const projects: Project[] = [
     category: ["AIML", "Hardware Design", "Research", "LLM", "Digital Design"],
     shortdescription:
       "Designing a hardware-efficient attention accelerator to deploy TinyLLMs on open-source RISC-V CPUs.",
-    longdescription:
-      "This ongoing undergraduate thesis focuses on developing a custom hardware accelerator for optimizing attention mechanisms, particularly Multi-Head Self-Attention (MHSA), targeting embedded RISC-V cores. The project aims to enable deployment of Small Language Models (SLMs) in power- and resource-constrained environments using custom instructions, systolic array acceleration, and quantized softmax support.",
     year: 2025,
-    type: "Undergraduate Thesis",
-    team: "Research",
+    type: "Research",
     status: "Ongoing",
     tags: [
       "Attention",
@@ -211,10 +201,8 @@ export const projects: Project[] = [
     category: ["AIML", "HPC", "CUDA"],
     shortdescription:
       "Designed a model-agnostic hyperparameter tuning engine using parallel random search using OpenMP and CUDA",
-    longdescription:
-      "Implemented a model-agnostic hyperparameter optimization system using random search. The engine runs in parallel on both GPU and CPU using CUDA and OpenMP, respectively. It benchmarks performance, tuning time, and optimality of parameters across models and platforms, demonstrating how system-level parallelism improves training workflows.",
     year: 2025,
-    team: "Solo Project",
+    type: "Project",
     status: "Completed",
     tags: [
       "CUDA",
@@ -281,10 +269,8 @@ export const projects: Project[] = [
     category: ["AIML"],
     shortdescription:
       "Built a full ML pipeline for detecting intrusions in network traffic using classification models and Bayesian hyperparameter optimization.",
-    longdescription:
-      "Developed a complete Network Intrusion Detection System (NIDS) using machine learning techniques. The pipeline includes data exploration, preprocessing, model selection, and tuning. Among models tested (Logistic Regression, SVM, KNN, Decision Tree, Random Forest), the Random Forest classifier showed the best performance. Hyperparameter tuning was done using Bayesian Optimization to further improve results.",
     year: 2025,
-    team: "Solo Project",
+    type: "Project",
     status: "Completed",
     tags: [
       "NIDS",
@@ -366,7 +352,7 @@ export const projects: Project[] = [
     shortdescription:
       "Designed a FIR filter in Verilog with both serial and parallel implementations. Compared their performance using waveform simulations.",
     year: 2025,
-    team: "Solo Project",
+    type: "Project",
     status: "Completed",
     tags: [
       "FIR",
@@ -377,7 +363,6 @@ export const projects: Project[] = [
     ],
     tech: ["Verilog", "GTKWave", "Icarus Verilog"],
     featured: false,
-    codeLink: "https://github.com/ZeuzoxD/parallel-fir",
     contentBlocks: [
       {
         type: "heading",
@@ -402,13 +387,6 @@ export const projects: Project[] = [
           "<strong>fir_parallel.v:</strong> A pipelined FIR design that computes results in overlapping stages to increase throughput.",
           "<strong>fir_tb.v:</strong> Unified testbench driving both modules with identical input sequences for waveform comparison.",
         ],
-      },
-      {
-        type: "image",
-        src: "/images/projectimgs/fir-parallel/wave.png",
-        alt: "Waveform comparison of serial and parallel FIR filter",
-        caption: "Output waveform showing both FIR versions in simulation",
-        layout: "full-width",
       },
       {
         type: "link",

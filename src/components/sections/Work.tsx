@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { IconArrowLeft } from "@tabler/icons-react";
 import GeometricBackground from "../GeometricBackground";
 import { WorkSection } from "./Project";
@@ -10,20 +10,9 @@ interface WorksPageProps {
 }
 
 export default function WorksPage({ onBack }: WorksPageProps) {
-  const { scrollYProgress } = useScroll();
-  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-
   return (
     <div className="min-h-screen min-w-screen bg-black text-white relative overflow-x-hidden font-sf">
       <GeometricBackground />
-      <div className="fixed inset-0 z-0">
-        <motion.div className="absolute inset-0" style={{ y: backgroundY }}>
-          <div className="absolute top-20 left-10 w-32 h-32 border border-purple-500/20 rotate-45 rounded-lg"></div>
-          <div className="absolute top-40 right-20 w-24 h-24 border border-pink-500/20 rotate-12 rounded-full"></div>
-          <div className="absolute bottom-40 left-1/4 w-16 h-16 border border-blue-500/20 rotate-45"></div>
-          <div className="absolute top-1/3 left-1/2 w-20 h-20 border border-purple-500/10 rotate-12 rounded-lg"></div>
-        </motion.div>
-      </div>
 
       {/* Header */}
       <motion.header
@@ -88,45 +77,6 @@ export default function WorksPage({ onBack }: WorksPageProps) {
           </motion.div>
         </div>
       </section>
-
-      {/* Featured Works */}
-
-      {/* Stats Section */}
-      {/* <section className="relative z-10 py-20 px-6"> */}
-      {/*   <div className="max-w-4xl mx-auto"> */}
-      {/*     <motion.div */}
-      {/*       initial={{ opacity: 0, y: 50 }} */}
-      {/*       whileInView={{ opacity: 1, y: 0 }} */}
-      {/*       transition={{ duration: 0.8 }} */}
-      {/*       viewport={{ once: true }} */}
-      {/*       className="grid grid-cols-2 md:grid-cols-4 gap-6" */}
-      {/*     > */}
-      {/*       {[ */}
-      {/*         { value: "15+", label: "Projects Completed" }, */}
-      {/*         { value: "5+", label: "Processor Designs" }, */}
-      {/*         { value: "10+", label: "Verification Suites" }, */}
-      {/*         { value: "3+", label: "Years Experience" }, */}
-      {/*       ].map((stat, index) => ( */}
-      {/*         <motion.div */}
-      {/*           key={index} */}
-      {/*           className="text-center p-6 bg-white/5 backdrop-blur-xl border border-white/10 hover:border-purple-400/40 rounded-xl transition-all duration-300 shadow-2xl" */}
-      {/*           whileHover={{ scale: 1.05 }} */}
-      {/*           initial={{ opacity: 0, y: 20 }} */}
-      {/*           whileInView={{ opacity: 1, y: 0 }} */}
-      {/*           transition={{ delay: index * 0.1 }} */}
-      {/*           viewport={{ once: true }} */}
-      {/*         > */}
-      {/*           <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent mb-2 font-sf"> */}
-      {/*             {stat.value} */}
-      {/*           </div> */}
-      {/*           <div className="text-sm text-gray-400 font-sf"> */}
-      {/*             {stat.label} */}
-      {/*           </div> */}
-      {/*         </motion.div> */}
-      {/*       ))} */}
-      {/*     </motion.div> */}
-      {/*   </div> */}
-      {/* </section> */}
 
       <WorkSection />
       {/* CTA Section */}

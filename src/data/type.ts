@@ -57,15 +57,11 @@ export type Project = {
   subtitle: string;
   category?: string[];
   shortdescription: string;
-  longdescription?: string;
   year: number;
-  type?: string;
-  team: "Solo Project" | "Research";
+  type: "Project" | "Research";
   status: "Completed" | "In Progress" | "Ongoing";
   tags: string[];
   tech: string[];
   featured?: boolean;
-  demoLink?: string;
-  codeLink?: string;
   contentBlocks?: ProjectContentBlock[];
 };
